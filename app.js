@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(v1, categoriesRouter)
-app.use(`${v1}/cms`, imagesRouter);
+app.use(`${v1}`, imagesRouter);
 
 // middlewares
 app.use(notFoundMiddleware);

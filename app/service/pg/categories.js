@@ -12,12 +12,12 @@ const getAllCategories = async () => {
 const createCategories = async(req)=>{
     const name = req;
     // cari categories dengan field name
-    const check = await (await db.query(`SELECT * FROM product_categories WHERE nama='${name}'`)).rowCount;
+    const check = await (await db.query(`SELECT * FROM product_categories WHERE name='${name}'`)).rowCount;
     console.log(check)
-  // apa bila check true / data categories sudah ada maka kita tampilkan error bad request dengan message kategori nama duplikat
-    if (check!=0) throw new BadRequestError('kategori nama duplikat');
+  // apa bila check true / data categories sudah ada maka kita tampilkan error bad request dengan message kategori name duplikat
+    if (check!=0) throw new BadRequestError('kategori name duplikat');
 
-    const result = await (await db.query(`INSERT INTO product_categories(nama) VALUES ('${name}')`)).command;
+    const result = await (await db.query(`INSERT INTO product_categories(name) VALUES ('${name}')`)).command;
     
     return result;
 }
@@ -41,12 +41,12 @@ const updateCategories = async (req) => {
     // cari categories dengan field name dan id selain dari yang dikirim dari params
     
 
-    const check = await (await db.query(`SELECT * FROM product_categories WHERE nama='${name}'`));
+    const check = await (await db.query(`SELECT * FROM product_categories WHERE name='${name}'`));
 
-    // apa bila check true / data categories sudah ada maka kita tampilkan error bad request dengan message kategori nama duplikat
-    if (check.rowCount>0) throw new BadRequestError('kategori nama duplikat');
+    // apa bila check true / data categories sudah ada maka kita tampilkan error bad request dengan message kategori name duplikat
+    if (check.rowCount>0) throw new BadRequestError('kategori name duplikat');
 
-    const result = await (await db.query(`UPDATE product_categories SET nama='${name}' WHERE id='${id}'`)).rowCount;
+    const result = await (await db.query(`UPDATE product_categories SET name='${name}' WHERE id='${id}'`)).rowCount;
     console.log(result)
 
     return result;
