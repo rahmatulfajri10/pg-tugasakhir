@@ -3,6 +3,8 @@ const db = require('../../../db/config');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
+const { NotFoundError, BadRequestError } = require('../../../errors');
+
 const bcrypt = require('bcryptjs');
 require("dotenv").config();
 SECRET = process.env.SECRET
