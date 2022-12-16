@@ -16,18 +16,18 @@ const generateUrlImage = async (req) => {
 
 // * 1. kita gunain cara ini
 const createImages = async (req) => {
-
+    console.log(req)
     if (!req.file){
-        const result = await db.query(`INSERT INTO product_galleries(product_id, url) VALUES (1,'public/uploads/default.png')`);
+        const result = await db.query(`INSERT INTO product_galleries(products_id, url) VALUES (1,'public/uploads/default.png')`);
     }else{
-        const result = await db.query(`INSERT INTO product_galleries(product_id, url) VALUES ()`);
+        const result = await db.query(`INSERT INTO product_galleries(products_id, url) VALUES (2, '${req.file.filename}')`);
     }
     // const result = await Images.create({
     //     name: req.file
     //     ? `uploads/${req.file.filename}`
     //     : 'uploads/default.jpeg',
     // });
-
+    result=req.complete
     return result;
 };
 
