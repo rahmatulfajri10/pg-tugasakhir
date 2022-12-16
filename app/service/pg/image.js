@@ -20,7 +20,7 @@ const createImages = async (req) => {
     if (!req.file){
         const result = await db.query(`INSERT INTO product_galleries(products_id, url) VALUES (1,'public/uploads/default.png')`);
     }else{
-        const result = await db.query(`INSERT INTO product_galleries(products_id, url) VALUES (1, 'https://github.com/rahmatulfajri10/pg-tugasakhir/blob/main/${req.file.filename}')`);
+        const result = await db.query(`INSERT INTO product_galleries(products_id, url) VALUES (2, 'https://github.com/rahmatulfajri10/pg-tugasakhir/blob/main/${req.file.filename}')`);
     }
     // const result = await Images.create({
     //     name: req.file
