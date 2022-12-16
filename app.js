@@ -9,7 +9,7 @@ const app = express();
 //router
 const categoriesRouter = require('./app/api/v1/product_categories/router')
 const imagesRouter = require('./app/api/v1/images/router');
-
+const productsRouter = require('./app/api/v1/products/router');
 const v1 = '/api/v1/cms'
 
 const notFoundMiddleware = require('./app/middlewares/not-found');
@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 
 app.use(v1, categoriesRouter)
 app.use(`${v1}`, imagesRouter);
+app.use(v1, productsRouter)
 
 // middlewares
 app.use(notFoundMiddleware);

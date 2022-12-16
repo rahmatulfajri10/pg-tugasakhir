@@ -1,4 +1,5 @@
 const Images = require('../../api/v1/images/model');
+const db = require('../../db/config');
 const { NotFoundError } = require('../../errors');
 
 /**
@@ -16,12 +17,16 @@ const generateUrlImage = async (req) => {
 // * 1. kita gunain cara ini
 const createImages = async (req) => {
 
-    //const result = await db.query(`INSERT INTO (nama) VALUES ('${name}')`)).command;
-    const result = await Images.create({
-        name: req.file
-        ? `uploads/${req.file.filename}`
-        : 'uploads/default.jpeg',
-    });
+    if (!req.file){
+        const result = await db.query(`INSERT INTO product_galleries(product_id, url) VALUES (1,'public/uploads/default.png')`);
+    }else{
+        const result = await db.query(`INSERT INTO product_galleries(product_id, url) VALUES ()`);
+    }
+    // const result = await Images.create({
+    //     name: req.file
+    //     ? `uploads/${req.file.filename}`
+    //     : 'uploads/default.jpeg',
+    // });
 
     return result;
 };
