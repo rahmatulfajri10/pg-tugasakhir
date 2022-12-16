@@ -3,7 +3,13 @@ const db = require('../../db/config');
 const { NotFoundError, BadRequestError } = require('../../errors');
 
 const getAllProducts = async () => {
-    const result = await (await db.query(`SELECT * FROM products`)).rows;
+    const result = await (await db.query(`SELECT products.id,
+	products.name,
+	products.price,
+	products.description,
+	product_galleries
+FROM
+	products LEFT JOIN product_galleries ON products.categories_id = product_galleries.id`)).rows;
 
     return result;
 };
