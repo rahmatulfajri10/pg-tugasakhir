@@ -2,10 +2,7 @@ const express = require('express')
 const router = express.Router()
 const userController = require('../../../service/pg/user')
 const Auth = require('../../../middlewares/auth')
-const {  login,
-    logout,
-    register,
-    verify} = require('./controller');
+const {  login, logout, register, verify} = require('./controller');
 
 router.post('/register', register)
 

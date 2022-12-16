@@ -1,6 +1,11 @@
 const { loginUser, logoutUser, registerUser, verifyUser } = require('../../../service/pg/user');
 const db = require('../../../db/config');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
+const bcrypt = require('bcryptjs');
+require("dotenv").config();
+SECRET = process.env.SECRET
 
 const login = async (req, res, next) =>{
     const {email, password } = req.body;
