@@ -7,7 +7,7 @@ const getAllProducts = async () => {
 	products.name,
 	products.price,
 	products.description,
-	product_galleries
+	product_galleries.url
 FROM
 	products LEFT JOIN product_galleries ON products.categories_id = product_galleries.id`)).rows;
 
