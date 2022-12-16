@@ -9,7 +9,7 @@ const getAllProducts = async () => {
 	products.description,
 	product_galleries.url
 FROM
-	products LEFT JOIN product_galleries ON products.categories_id = product_galleries.id`)).rows;
+	products LEFT JOIN product_galleries ON products.id = product_galleries.products_id`)).rows;
 
     return result;
 };
